@@ -212,7 +212,14 @@ public class SPlayer {
 	public static final String getLogPath() {
 		if (splayerLogPath == null) {
 			// @INFO 这儿要改下，不能直接取
-			splayerLogPath = "/sdcard/splayer/";
+			if (Environment.getExternalStorageState().equals(
+					Environment.MEDIA_MOUNTED)) {
+				splayerLogPath = Environment.getExternalStorageDirectory()
+						.getAbsolutePath()+"/splayer/";
+			}else{
+				
+			}
+			// splayerLogPath = "/sdcard/splayer/";
 		}
 		try {
 			File f = new File(splayerLogPath);
